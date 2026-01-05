@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<div id="submitToast" class="toast" aria-live="polite">
+  ✅ Tool submitted successfully
+</div>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Contact me</h3>
+      <button class="modal-close" id="closeContact">×</button>
+    </div>
+
+    <form class="modal-body" id="contactForm">
+      <div class="form-grid">
+        <div>
+          <label>Your name</label>
+          <input type="text" id="contactName" required />
+        </div>
+
+        <div>
+          <label>Your email</label>
+          <input type="email" id="contactEmail" required />
+        </div>
+
+        <div class="full">
+          <label>Message</label>
+          <textarea id="contactMessage" required></textarea>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelContact">
+          Cancel
+        </button>
+        <button type="submit" class="btn">
+          Send message
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<body>
+
+<header>
+  <h1>AI Tools Hub</h1>
+  <p>Discover, compare, and explore the most powerful AI tools available today — from chatbots and creative generators to productivity, research, marketing, and developer AI.</p>
+</header>
+
+<nav>
+  <a href="#chat">Chatbots</a>
+  <a href="#writing">Writing</a>
+  <a href="#image">Image</a>
+  <a href="#video">Video & Audio</a>
+  <a href="#dev">Development</a>
+  <a href="#automation">Business Automation</a>
+  <a href="#research">Learning & Research</a>
+  <a href="#marketing">Marketing & SEO</a>
+  <a href="#translation">Translation</a>
+  <a href="#creative">Design & Creative</a>
+</nav>
+
+<div class="toolbar">
+  <input id="search" aria-label="Search AI tools" placeholder="Search AI tools..." />
+
+  <select id="filter" class="control desktop-only" aria-label="Filter by pricing">
+    <option value="all">All</option>
+    <option value="free">Free</option>
+    <option value="freemium">Freemium</option>
+    <option value="paid">Paid</option>
+  </select>
+
+  <select id="sort" class="control desktop-only" aria-label="Sort tools">
+    <option value="default">Sort: Default</option>
+    <option value="popularity">Sort: Popularity</option>
+    <option value="az">Sort: A → Z</option>
+  </select>
+
+  <select id="mobileFilterSort" class="control mobile-only" aria-label="Filter or sort">
+    <option value="">Filter/Sort…</option>
+    <option value="filter:all">Filter: All</option>
+    <option value="filter:free">Filter: Free</option>
+    <option value="filter:freemium">Filter: Freemium</option>
+    <option value="filter:paid">Filter: Paid</option>
+    <option value="sort:default">Sort: Default</option>
+    <option value="sort:popularity">Sort: Popularity</option>
+    <option value="sort:az">Sort: A → Z</option>
+  </select>
+
+  <div class="submit-wrap">
+    <button id="openSubmit" class="btn" type="button">+ Submit a tool</button>
+    <span class="submit-info" aria-label="Submission info"
+      data-tooltip="Submissions are saved only in your browser and are visible only to you. They do not affect the global website.">!</span>
+  </div>
+</div>
+
+<div id="emptyState" class="empty-state" aria-live="polite">
+  <div class="empty-card">😕 <b>No tools found</b><br/>Try changing filters or search terms.</div>
+</div>
+
+<button id="fabSubmit" class="fab-submit" type="button" aria-label="Submit a tool">+ Submit</button>
+
+<!-- ===================== -->
+<!-- SECTIONS -->
+<!-- ===================== -->
+
+<section id="chat">
+  <h2>🤖 AI Chatbots</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-price="Free / $20" data-bestfor="Writing">
+  <span class="badge featured" data-tooltip="Featured by AI Tools Hub">Featured</span>
+      <h3>
+  <img class="icon" alt="ChatGPT">
+  ChatGPT
+  <span class="badge freemium"
+        data-tooltip="Free plan available · Paid plans from ~$10–$20/month">
+    Freemium
+  </span>
+</h3>
+      <p>General-purpose AI for writing, coding, learning and research.</p>
+      <a href="https://chat.openai.com?ref=aitoolshub" target="_blank" data-affiliate-link>Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Writing">
+      <h3><img class="icon" alt="Claude">Claude<span class="badge freemium" data-tooltip="Free plan available · Paid plans from ~$10–$20/month">Freemium</span></h3>
+      <p>Helpful AI focused on reasoning, safety and long-form content.</p>
+      <a href="https://www.anthropic.com/claude" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Research">
+      <h3><img class="icon" alt="Perplexity">Perplexity<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>AI-powered search engine with real-time sources.</p>
+      <a href="https://www.perplexity.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Productivity">
+      <h3><img class="icon" alt="Google Gemini">Google Gemini<span class="badge freemium" data-tooltip="Free plan available · Paid plans may exist">Freemium</span></h3>
+      <p>Google’s AI assistant integrated with search and workspace.</p>
+      <a href="https://gemini.google.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="free" data-bestfor="Coding">
+      <h3><img class="icon" alt="DeepSeek">DeepSeek<span class="badge free" data-tooltip="Completely free to use · No payment required">Free</span></h3>
+      <p>Open models focused on reasoning and coding.</p>
+      <a href="https://www.deepseek.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <h2>✍️ Writing & Text AI</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-bestfor="Writing">
+      <h3><img class="icon" alt="Grammarly">Grammarly<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Grammar, tone, and clarity improvements for any text.</p>
+      <a href="https://www.grammarly.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="paid" data-bestfor="Marketing">
+      <h3><img class="icon" alt="Jasper">Jasper<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>AI content writer for blogs, ads and marketing.</p>
+      <a href="https://www.jasper.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Writing">
+      <h3><img class="icon" alt="QuillBot">QuillBot<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Paraphrasing, summarizing, and rewriting assistant.</p>
+      <a href="https://quillbot.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Marketing">
+      <h3><img class="icon" alt="Writesonic">Writesonic<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>AI writing assistant for articles, ads, and SEO content.</p>
+      <a href="https://writesonic.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="image">
+  <h2>🎨 Image Generation</h2>
+  <div class="grid">
+    <div class="card" data-type="paid" data-bestfor="Design">
+      <h3><img class="icon" alt="Midjourney">Midjourney<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>High-quality AI image generation with artistic control.</p>
+      <a href="https://www.midjourney.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="DALL·E">DALL·E<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Create images from text prompts.</p>
+      <a href="https://chat.openai.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Stable Diffusion">Stable Diffusion<span class="badge freemium" data-tooltip="Open-source · Free and paid options">Freemium</span></h3>
+      <p>Open-source image generation with full creative control.</p>
+      <a href="https://stability.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Leonardo AI">Leonardo AI<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Game-ready and artistic image generation platform.</p>
+      <a href="https://leonardo.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Bing Image Creator">Bing Image Creator<span class="badge freemium" data-tooltip="Free with Microsoft account">Freemium</span></h3>
+      <p>DALL·E-powered image generation by Microsoft.</p>
+      <a href="https://www.bing.com/images/create" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <h2>🎬 Video & Audio AI</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-bestfor="Video">
+      <h3><img class="icon" alt="Runway">Runway<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>AI video editing and generative video tools.</p>
+      <a href="https://runwayml.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Audio">
+      <h3><img class="icon" alt="ElevenLabs">ElevenLabs<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Ultra-realistic AI voice generation.</p>
+      <a href="https://elevenlabs.io" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Music">
+      <h3><img class="icon" alt="Suno">Suno<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Create full songs, vocals, and music from text prompts.</p>
+      <a href="https://suno.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="paid" data-bestfor="Video">
+      <h3><img class="icon" alt="HeyGen">HeyGen<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>AI avatar videos for marketing, education, and presentations.</p>
+      <a href="https://www.heygen.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="dev">
+  <h2>💻 Development AI</h2>
+  <div class="grid">
+    <div class="card" data-type="paid" data-bestfor="Coding">
+      <h3><img class="icon" alt="GitHub Copilot">GitHub Copilot<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>AI pair-programmer for faster coding.</p>
+      <a href="https://github.com/features/copilot" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Coding">
+      <h3><img class="icon" alt="Replit AI">Replit AI<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Browser-based coding with AI assistance.</p>
+      <a href="https://replit.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Coding">
+      <h3><img class="icon" alt="Cursor">Cursor<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>AI-first code editor built for deep code understanding.</p>
+      <a href="https://cursor.sh" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="automation">
+  <h2>🧩 Business Automation & Productivity</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-bestfor="Productivity" data-api="true">
+      <h3><img class="icon" alt="Notion AI">Notion AI<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Docs + notes + tasks with built-in AI for writing and summaries.</p>
+      <a href="https://www.notion.so/product/ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Automation" data-api="true">
+      <h3><img class="icon" alt="Zapier">Zapier<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Automate workflows across thousands of apps with triggers/actions.</p>
+      <a href="https://zapier.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Automation" data-api="true">
+      <h3><img class="icon" alt="Make">Make<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Visual automation builder for advanced scenarios and integrations.</p>
+      <a href="https://www.make.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="paid" data-bestfor="Productivity">
+      <h3><img class="icon" alt="Otter.ai">Otter.ai<span class="badge paid" data-tooltip="Paid product · Free trial may exist">Paid</span></h3>
+      <p>AI meeting notes, transcription, and action items for teams.</p>
+      <a href="https://otter.ai" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <h2>📚 Learning & Research Assistants</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-bestfor="Research">
+      <h3><img class="icon" alt="Perplexity">Perplexity<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Answer questions with citations and web results.</p>
+      <a href="https://www.perplexity.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Research">
+      <h3><img class="icon" alt="Elicit">Elicit<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Literature review assistant: find papers and extract key claims.</p>
+      <a href="https://elicit.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Learning">
+      <h3><img class="icon" alt="Khanmigo">Khanmigo<span class="badge freemium" data-tooltip="Availability depends on region · Often paid for full access">Freemium</span></h3>
+      <p>Tutoring-style AI for learning and guided practice.</p>
+      <a href="https://www.khanacademy.org/khan-labs" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Research">
+      <h3><img class="icon" alt="Wolfram|Alpha">Wolfram|Alpha<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Computational knowledge engine for math and data.</p>
+      <a href="https://www.wolframalpha.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="marketing">
+  <h2>📈 Marketing & SEO Tools</h2>
+  <div class="grid">
+    <div class="card" data-type="paid" data-bestfor="Marketing">
+      <h3><img class="icon" alt="Jasper">Jasper<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>Marketing content workflows, brand voice and campaign assets.</p>
+      <a href="https://www.jasper.ai" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="SEO">
+      <h3><img class="icon" alt="Semrush">Semrush<span class="badge freemium" data-tooltip="Free limited access · Paid plans available">Freemium</span></h3>
+      <p>Keyword research, content briefs, and competitive analysis.</p>
+      <a href="https://www.semrush.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="paid" data-bestfor="SEO">
+      <h3><img class="icon" alt="Surfer SEO">Surfer SEO<span class="badge paid" data-tooltip="Paid product · Pricing usually starts around ~$10–$30/month">Paid</span></h3>
+      <p>On-page optimization and content scoring to rank better.</p>
+      <a href="https://surferseo.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="SEO">
+      <h3><img class="icon" alt="Ubersuggest">Ubersuggest<span class="badge freemium" data-tooltip="Free limited access · Paid plans available">Freemium</span></h3>
+      <p>Keyword ideas, content suggestions, and basic SEO audits.</p>
+      <a href="https://neilpatel.com/ubersuggest/" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="translation">
+  <h2>🌍 Translation & Language Tools</h2>
+  <div class="grid">
+    <div class="card" data-type="free" data-bestfor="Translation">
+      <h3><img class="icon" alt="Google Translate">Google Translate<span class="badge free" data-tooltip="Free to use">Free</span></h3>
+      <p>Fast translation across many languages, plus voice and camera modes.</p>
+      <a href="https://translate.google.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Translation">
+      <h3><img class="icon" alt="DeepL">DeepL<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>High-quality translations and writing improvements.</p>
+      <a href="https://www.deepl.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Language Learning">
+      <h3><img class="icon" alt="Duolingo">Duolingo<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Language learning with bite-size lessons and practice.</p>
+      <a href="https://www.duolingo.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Writing">
+      <h3><img class="icon" alt="LanguageTool">LanguageTool<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Multilingual grammar and style checker.</p>
+      <a href="https://languagetool.org" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<section id="creative">
+  <h2>🖌️ Design & Creative Tools</h2>
+  <div class="grid">
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Canva">Canva<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>Design templates with AI features (text-to-image, magic write, resize).</p>
+      <a href="https://www.canva.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="paid" data-bestfor="Design">
+      <h3><img class="icon" alt="Adobe Firefly">Adobe Firefly<span class="badge paid" data-tooltip="Paid product · Often bundled with Adobe plans">Paid</span></h3>
+      <p>Generative images and effects integrated into Adobe tools.</p>
+      <a href="https://firefly.adobe.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Figma">Figma<span class="badge freemium" data-tooltip="Free plan available · Paid plans available">Freemium</span></h3>
+      <p>UI/UX design and prototyping (AI features where available).</p>
+      <a href="https://www.figma.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-type="freemium" data-bestfor="Design">
+      <h3><img class="icon" alt="Photopea">Photopea<span class="badge freemium" data-tooltip="Free with ads · Paid plan available">Freemium</span></h3>
+      <p>Photoshop-like editor in the browser for quick creative work.</p>
+      <a href="https://www.photopea.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- SUBMIT TOOL MODAL -->
+<!-- ===================== -->
+<div id="submitModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
+    <div class="modal-header">
+      <h3 id="submitTitle">Submit a Tool</h3>
+      <button class="modal-close" id="closeSubmit" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="helper">Your submission is stored locally (in your browser). No backend yet.</div>
+      <form id="submitForm">
+        <div class="form-grid" style="margin-top:1rem;">
+          <div>
+            <label for="toolName">Tool name *</label>
+            <input id="toolName" name="toolName" type="text" placeholder="e.g. Notion AI" required />
+          </div>
+          <div>
+            <label for="toolUrl">Website URL *</label>
+            <input id="toolUrl" name="toolUrl" type="url" placeholder="https://..." required />
+          </div>
+          <div>
+            <label for="toolCategory">Category *</label>
+            <select id="toolCategory" name="toolCategory" required>
+              <option value="chat">AI Chatbots</option>
+              <option value="writing">Writing & Text</option>
+              <option value="image">Image Generation</option>
+              <option value="video">Video & Audio</option>
+              <option value="dev">Development</option>
+              <option value="automation">Business Automation</option>
+              <option value="research">Learning & Research</option>
+              <option value="marketing">Marketing & SEO</option>
+              <option value="translation">Translation</option>
+              <option value="creative">Design & Creative</option>
+            </select>
+          </div>
+          <div>
+            <label for="toolType">Pricing *</label>
+            <select id="toolType" name="toolType" required>
+              <option value="free">Free</option>
+              <option value="freemium">Freemium</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="toolDesc">Short description *</label>
+            <textarea id="toolDesc" name="toolDesc" placeholder="What does it do? Who is it for?" required></textarea>
+          </div>
+          <div class="full">
+            <label for="toolPrice">Pricing text (optional)</label>
+            <input id="toolPrice" name="toolPrice" type="text" placeholder="e.g. Free / $20 · or $10–$30/month" />
+          </div>
+          <div class="full">
+            <label for="toolEmail">Your email (optional)</label>
+            <input id="toolEmail" name="toolEmail" type="email" placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div class="modal-actions" style="margin-top:1rem;">
+          <button type="button" class="btn btn-secondary" id="cancelSubmit">Cancel</button>
+          <button type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top -->
+<button id="toTop" class="to-top" type="button" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M12 5l-7 7 1.4 1.4L11 8.8V20h2V8.8l4.6 4.6L19 12l-7-7z" fill="currentColor"/>
+  </svg>
+</button>
+
+<!-- How this site works -->
+<div id="howModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+    <div class="modal-header">
+      <h3 id="howTitle">How this site works</h3>
+      <button class="modal-close" id="closeHow" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="helper" style="margin:0;">Short, transparent explanation so visitors know what’s happening.</p>
+      <ul class="how-list">
+        <li><b>Sponsored</b> tools are paid placements and may include affiliate links.</li>
+        <li><b>Community</b> tools are added via “Submit a tool”.</li>
+        <li><b>Popularity</b> is based on how many times you click “Visit” — saved only in your browser.</li>
+        <li><b>Submissions</b> are saved only in your browser and visible only to you (no backend yet).</li>
+      </ul>
+      <div class="modal-actions" style="padding:0;margin-top:1rem;">
+        <button type="button" class="btn btn-secondary" id="okHow">Got it</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Row 1: Brand + links -->
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>AI Tools Hub</strong>
+        <span class="footer-tagline">Built for discovery & learning</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#" id="openHow" class="footer-link">How this site works</a>
+        <a href="#" id="openContact" class="footer-link">Contact</a>
+        <a class="donate-btn" href="https://paypal.me/aitoolshubhq" target="_blank" rel="noopener noreferrer">
+  <img
+    src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+    alt="Donate with PayPal"
+  />
+</a>
+      </div>
+    </div>
+
+    <!-- Row 2: Disclaimer -->
+    <div class="footer-disclaimer">
+      Disclaimer: All product names, logos, and brands are property of their respective owners.
+      Listings marked as <b>Sponsored</b> may include affiliate links.
+      This site is not affiliated with or endorsed by the listed companies.
+    </div>
+
+    <!-- Row 3: Copyright -->
+    <div class="footer-bottom">
+      © <span id="year"></span> AI Tools Hub · Built by you
+    </div>
+
+  </div>
+</footer>
+
+
+<script src="./app.js"></script>
+</body>
+</html>
