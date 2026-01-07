@@ -654,5 +654,82 @@ textarea{min-height:110px;resize:vertical;}
   background: rgba(56,189,248,0.18);
   border-color: rgba(56,189,248,0.45);
 }
+/* =========================
+   FIX: Remove the big dark bands
+   ========================= */
+
+/* Reduce hero spacing so it doesn't "push" a giant empty area */
+header{
+  padding: 3rem 1.25rem 1.5rem; /* was 4rem 2rem */
+}
+
+/* If your H2 is in the top section, don't create a huge block */
+section h2{
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Your old nav styles create a big block background.
+   The new categorybar should be a slim strip. */
+.categorybar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(15,23,42,.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56,189,248,0.18);
+
+  /* IMPORTANT: keep it slim */
+  padding: .6rem 0;
+}
+
+/* Make sure the inner container isn't adding big height */
+.categorybar__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.categorybar__inner::-webkit-scrollbar{ display:none; }
+
+/* Chips look cleaner and smaller */
+.categorybar__inner a{
+  flex: 0 0 auto;
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  font-size: .9rem;
+  white-space: nowrap;
+
+  background: rgba(2,6,23,.45);
+  border: 1px solid rgba(148,163,184,.22);
+}
+.categorybar__inner a:hover{
+  background: rgba(56,189,248,.14);
+  border-color: rgba(56,189,248,.42);
+}
+
+/* Remove extra big spacing above/below the controls section */
+.controls{
+  padding: 0;              /* kill any section padding */
+  margin: 1.1rem auto 0;   /* a small gap below nav */
+}
+.controls__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Your toolbar already has its own padding + border.
+   This prevents it from looking like a second bar. */
+.toolbar{
+  margin: 0 auto; /* remove large top/bottom margins */
+}
 
 
