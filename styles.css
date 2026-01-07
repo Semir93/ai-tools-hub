@@ -33,17 +33,7 @@ header p{
   font-size:1.1rem;
 }
 
-nav{
-  display:flex;
-  justify-content:center;
-  gap:1rem;
-  flex-wrap:wrap;
-  padding:1rem;
-  background:rgba(15,23,42,.9);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
+nav{ background: transparent; padding: 0; }
 nav a{
   color:var(--text);
   text-decoration:none;
@@ -730,6 +720,63 @@ section h2{
    This prevents it from looking like a second bar. */
 .toolbar{
   margin: 0 auto; /* remove large top/bottom margins */
+}
+nav.categorybar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* kill the full-width slab */
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+/* Create a clean centered pill container */
+.categorybar__inner{
+  max-width: 1200px;
+  margin: 0.75rem auto 0;            /* space from hero */
+  padding: 0.55rem 0.75rem;
+
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  background: rgba(15,23,42,0.65);
+  border: 1px solid rgba(56,189,248,0.18);
+  border-radius: 999px;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+.categorybar__inner::-webkit-scrollbar{ display:none; }
+
+/* Category chips */
+.categorybar__inner a{
+  flex: 0 0 auto;
+  padding: .42rem .85rem;
+  border-radius: 999px;
+  font-size: .9rem;
+  white-space: nowrap;
+  text-decoration: none;
+
+  background: rgba(2,6,23,0.35);
+  border: 1px solid rgba(148,163,184,0.20);
+  color: var(--text);
+}
+.categorybar__inner a:hover{
+  background: rgba(56,189,248,0.14);
+  border-color: rgba(56,189,248,0.40);
+}
+
+/* Remove the feeling of a second "bar" under the nav */
+section.controls{
+  padding: 0 !important;
+  margin-top: 0.9rem !important;
 }
 
 
