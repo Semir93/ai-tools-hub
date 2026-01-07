@@ -712,4 +712,92 @@ section.controls{
   .categorybar__inner::-webkit-scrollbar{ display:none; }
 }
 
+/* ===== Footer FIX ===== */
+
+.site-footer{
+  margin-top: 4rem;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(180deg, rgba(2,6,23,0.6), rgba(15,23,42,0.9));
+  border-top: 1px solid rgba(56,189,248,0.25);
+}
+
+.footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;               /* ✅ center the footer block */
+  padding: 0 2rem;              /* ✅ match page gutters */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-links{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link{
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.9;
+}
+.footer-link:hover{ opacity: 1; text-decoration: underline; }
+
+.footer-disclaimer{
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 900px;
+}
+
+.footer-bottom{
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+/* ✅ Make donate button not explode the layout */
+.donate-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.donate-btn img{
+  height: 28px;                 /* ✅ smaller, consistent */
+  width: auto;
+  display: block;
+}
+
+/* ✅ Now it aligns with footer content */
+.affiliate-disclaimer{
+  margin: 0;                    /* ✅ remove weird offsets */
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* Mobile footer */
+@media (max-width: 640px){
+  .footer-inner{ padding: 0 1.25rem; }  /* match your mobile padding */
+  .footer-top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-links{
+    justify-content: flex-start;
+  }
+}
 
