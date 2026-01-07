@@ -615,4 +615,44 @@ textarea{min-height:110px;resize:vertical;}
 .visit-btn:hover {
   background: #1e40af;
 }
+/* ===== Category bar (new nav wrapper) ===== */
+.categorybar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(15,23,42,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56,189,248,0.18);
+}
+
+.categorybar__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .75rem 1.25rem;
+
+  display: flex;
+  gap: .75rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.categorybar__inner::-webkit-scrollbar{ display:none; }
+
+.categorybar__inner a{
+  flex: 0 0 auto;
+  color: var(--text);
+  text-decoration: none;
+  padding: .55rem .95rem;
+  border-radius: 999px;
+  background: rgba(2,6,23,0.55);
+  border: 1px solid rgba(148,163,184,0.22);
+  font-size: .9rem;
+  white-space: nowrap;
+}
+
+.categorybar__inner a:hover{
+  background: rgba(56,189,248,0.18);
+  border-color: rgba(56,189,248,0.45);
+}
+
 
