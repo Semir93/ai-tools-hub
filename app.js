@@ -541,3 +541,29 @@ renderAllSignals();
 applyFavicons(); 
 window.addEventListener("scroll", onScroll);
 onScroll();
+<script src="./app.js"></script>
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("click", (e) => {
+    // Did we click a link inside a card?
+    const link = e.target.closest(".card a");
+    if (!link) return;
+
+    // Prefer explicit tool name from data-tool. Fallback to href.
+    const toolName = link.dataset.tool || link.href;
+
+    // 1) Google Analytics event (gtag)
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "affiliate_click", {
+        tool: toolName
+      });
+    }
+
+    // 2) Optional: local "popularity" counter in localStorage (if you use it)
+    // If you already have popularity logic elsewhere, keep only ONE copy.
+    const key = `popularity:${toolName}`;
+    const current = Number(localStorage.getItem(key) || "0");
+    localStorage.setItem(key, String(current + 1));
+  });
+});
