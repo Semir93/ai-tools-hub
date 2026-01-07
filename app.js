@@ -75,15 +75,16 @@ contactForm.addEventListener("submit", (e) => {
   const email = document.getElementById("contactEmail").value;
   const message = document.getElementById("contactMessage").value;
 
-  const mailto = `semir.onlinejobs@gmail.com
-    ?subject=Contact from ${encodeURIComponent(name)}
-    &body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    )}`;
+  const subject = `Contact from ${name}`;
+  const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+  const mailto =
+    `mailto:semir.onlinejobs@gmail.com` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
 
   window.location.href = mailto;
 });
-
 
 
 
@@ -531,7 +532,20 @@ okHow?.addEventListener("click", closeHowModal);
 howModal?.addEventListener("click", (e) => {
   if (e.target === howModal) closeHowModal();
 });
+document.addEventListener("click", (e) => {
+  const link = e.target.closest(".card a");
+  if (!link) return;
 
+  const card = link.closest(".card");
+  const toolName =
+    (card?.dataset.toolName && card.dataset.toolName.trim()) ||
+    (link.dataset.tool && link.dataset.tool.trim()) ||
+    link.href;
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "affiliate_click", { tool: toolName });
+  }
+});
 // Init
 
 bootstrapCards();
@@ -541,29 +555,7 @@ renderAllSignals();
 applyFavicons(); 
 window.addEventListener("scroll", onScroll);
 onScroll();
-<script src="./app.js"></script>
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("click", (e) => {
-    // Did we click a link inside a card?
-    const link = e.target.closest(".card a");
-    if (!link) return;
 
-    // Prefer explicit tool name from data-tool. Fallback to href.
-    const toolName = link.dataset.tool || link.href;
 
-    // 1) Google Analytics event (gtag)
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "affiliate_click", {
-        tool: toolName
-      });
-    }
-
-    // 2) Optional: local "popularity" counter in localStorage (if you use it)
-    // If you already have popularity logic elsewhere, keep only ONE copy.
-    const key = `popularity:${toolName}`;
-    const current = Number(localStorage.getItem(key) || "0");
-    localStorage.setItem(key, String(current + 1));
-  });
-});
