@@ -89,15 +89,33 @@
     </form>
   </div>
 </div>
-
-
+<script>
+  document.querySelectorAll('.visit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'affiliate_click', {
+          tool: btn.dataset.tool
+        });
+      }
+    });
+  });
+</script>
 <body>
 
+
+  
 <header>
   <h1>AI Tools Hub</h1>
   <p>Discover, compare, and explore the most powerful AI tools available today — from chatbots and creative generators to productivity, research, marketing, and developer AI.</p>
 </header>
-
+<section class="seo-content">
+  <h2>Best AI Tools for Writing, Image & Productivity</h2>
+  <p>
+    AI Tools Hub helps you discover and compare the best AI tools
+    for writing, image generation, video, productivity, research,
+    and development — all in one curated directory.
+  </p>
+</section>
 <nav>
   <a href="#chat">Chatbots</a>
   <a href="#writing">Writing</a>
@@ -856,6 +874,7 @@
 <script src="./app.js"></script>
 </body>
 </html>
+
 
 
 
